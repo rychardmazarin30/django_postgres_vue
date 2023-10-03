@@ -1,0 +1,1 @@
+const funcionarios = {template: `<h1>Funcionários</h1>`};
