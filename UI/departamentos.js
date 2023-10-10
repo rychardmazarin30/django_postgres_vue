@@ -79,7 +79,10 @@ data(){
         departamentos: [],
         modalTitle: "",
         id_departamento: 0,
-        nome_departamento: "",   
+        nome_departamento: "",
+        nome_departamento_filtro: "",  
+        id_departamento_filtro: "", 
+        departamento_fora_filtro: []  
     }
 },
 methods: {
@@ -87,6 +90,7 @@ methods: {
         axios.get(variables.API_URL + "departamento")
         .then((response) => {
             this.departamentos = response.data;
+            this.departamento_fora_filtro = response.data;
         });
     },
     addClick(){
@@ -127,7 +131,22 @@ methods: {
             this.refreshData();
             alert(response.data);
         });
+    },
+    FilterFn(){
+        var id_departamento_filtro = this.id_departamento_filtro;
+        var nome_departamento_filtro = this.nome_departamento_filtro
+
+        this.departamentos = this.departamento_fora_filtro.filter(
+            function(el){
+                return el.id_departamento.toString().toLowerCase().includes(
+                    id_departamento_filtro.toString().trin().toLowerCase()
+                )&&
+                el.nome_departamento.toString().toLowerCase().includes(
+                    nome_departamento_filtro.toString().trin().toLowerCase()
+                )
+            });
     }
+
 },
 mounted: function(){
     this.refreshData();

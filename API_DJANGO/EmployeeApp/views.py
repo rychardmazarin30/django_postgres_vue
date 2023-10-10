@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from django.http.response import JsonResponse
@@ -63,14 +62,14 @@ def funcionarioApi(request, id=0):
         return JsonResponse("Falha ao adicionar", safe=False)
 
     elif request.method == "DELETE":
-        funcionario = Funcionario.objects.get(id_funcionario=id)
+        funcionario = Funcionario.objects.gect(id_funcionario=id)
         funcionario.delete()
         return JsonResponse("Excluido com Sucesso!", safe=False)
     
 
 @csrf_exempt
 def salvarArquivo(request):
-    arquivo = request.FILES['arquivo']
+    arquivo = request.FILES['file']
     nome_arquivo = default_storage.save(arquivo.name, arquivo)
 
     return JsonResponse(nome_arquivo, safe=False)

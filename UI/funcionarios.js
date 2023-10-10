@@ -82,8 +82,8 @@ const funcionarios = {template: `
         </div>
 
         <div class="p-2 w-50 bd-highlight">
-            <img width="250px" height="250px" :src="PhotoPath+arquivo_foto" />
-            <input class="m-2" type="file" @change="imageUpload()">
+            <img width="315" height="250" :src="PhotoPath+arquivo_foto"/>
+            <input class="m-2" type="file" @change="imageUpload">
         </div>
 
     </div>
